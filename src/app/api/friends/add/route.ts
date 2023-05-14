@@ -14,7 +14,7 @@ export async function POST(req: Request) {
         const idToAdd = await fetchRedis('get', `user:email:${emailToAdd}`) as string
 
         if (!idToAdd) {
-            return new Response("This person does not exist.", { status: 404 })
+            return new Response("This user does not exist.", { status: 404 })
         }
 
         const session = await getServerSession(authOptions)
