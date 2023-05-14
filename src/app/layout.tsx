@@ -1,4 +1,4 @@
-import Providers from "./components/ui/Providers";
+import Providers from "./components/Providers";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 
