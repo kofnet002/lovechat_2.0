@@ -4,10 +4,10 @@ import { getServerSession } from "next-auth";
 interface DashbaordProps {}
 
 const Dashbaord = async () => {
-  const session = await getServerSession(authOptions)
+  const session = await getServerSession(authOptions);
   return (
     <>
-      <pre>{JSON.stringify(session)}</pre>
+      <h1>Dashboard</h1>
     </>
   );
 };
