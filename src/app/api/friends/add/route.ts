@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
         const { email: emailToAdd } = addFriendValidator.parse(body.email)
 
-        const idToAdd = await fetchRedis('get', `user:email:${emailToAdd}`) as string
+        const idToAdd = await fetchRedis('get', `user:email:${emailToAdd}`) as string // search by email to get user_id
 
         if (!idToAdd) {
             return new Response("This user does not exist.", { status: 404 })
@@ -27,12 +27,11 @@ export async function POST(req: Request) {
             return new Response("You cannot add yourself as a friend.", { status: 400 })
         }
 
-
         // check if user is already added
         const isAlreadyAdded = await fetchRedis('sismember', `user:${idToAdd}:incoming_friend_requests`, session.user.id) as 0 | 1
 
         if (isAlreadyAdded) {
-            return new Response("Alread added this user", { status: 400 })
+            return new Response("Already added this user", { status: 400 })
         }
 
         // check if user is already your friend

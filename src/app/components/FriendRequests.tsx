@@ -14,6 +14,7 @@ const FriendRequests: React.FC<FriendRequestsProps> = ({
   incomingFriendRequests,
   sessionId,
 }) => {
+
   const router = useRouter();
 
   const [friendRequests, setFriendRequests] = useState<IncomingFriendRequest[]>(
