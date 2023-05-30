@@ -28,7 +28,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
       <div className="flex h-screen items-center justify-center py-2 px-4 sm:px-6 lg:px-8">
         <div className="w-full flex flex-col items-center max-w-md-space-y-8">
           <div className="relative flex flex-col items-center gap-8">
-            <Image src='/logo.png' width={100} height={100} priority alt="logo" referrerPolicy="no-referrer" />
+            <Image fill src='/logo.png' width={100} height={100} priority alt="logo" referrerPolicy="no-referrer" />
             <h4 className="font-bold">LoveChat</h4>
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
               Sign in to your account

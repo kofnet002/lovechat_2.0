@@ -21,13 +21,13 @@ async function getChatMessages(chatId: string) {
 
         const reversedDbMessages = dbMessages.reverse()
         const messages = messageArrayValidator.parse(reversedDbMessages)
-
         return messages
 
     } catch (error) {
         notFound()
     }
 }
+
 
 const page = async ({ params }: PageProps) => {
     const { chatId } = params
@@ -37,6 +37,7 @@ const page = async ({ params }: PageProps) => {
     const { user } = session
 
     const [userId1, userId2] = chatId.split('--')
+
 
     if (user.id !== userId1 && user.id !== userId2) notFound()
 
@@ -72,7 +73,7 @@ const page = async ({ params }: PageProps) => {
             </div>
         </div>
 
-        <Messages initialMessages={initialMessages} sessionId={user.id} />
+        <Messages chatPartner={chatPartner} sessionImg={user.image} initialMessages={initialMessages} sessionId={user.id} />
         <ChatInput chatId={chatId} chatPartner={chatPartner} />
     </div>
 }
