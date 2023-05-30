@@ -1,21 +1,38 @@
 "use client"
 
-import { cn } from '@/lib/utils'
+import { pusherClient } from '@/lib/pusher'
+import { cn, toPusherKey } from '@/lib/utils'
 import { Message } from '@/lib/validations/message'
 import { format } from 'date-fns'
 import Image from 'next/image'
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 
 interface MessagesProps {
     initialMessages: Message[]
+    chatId: string
     sessionId: string
     sessionImg: string | null | undefined
     chatPartner: User
 }
 
-const Messages: FC<MessagesProps> = ({ initialMessages, sessionId, sessionImg, chatPartner }) => {
+const Messages: FC<MessagesProps> = ({ initialMessages, chatId, sessionId, sessionImg, chatPartner }) => {
     const [messages, setMessages] = useState<Message[]>(initialMessages)
 
+    // making real time update for chat messages
+    useEffect(() => {
+        pusherClient.subscribe(toPusherKey(`chat:${chatId}`))
+
+        const messageHandler = (message: Message) => {
+            setMessages((prev) => [message, ...prev])
+        }
+
+        pusherClient.bind('incoming_message', messageHandler)
+
+        return () => {
+            pusherClient.subscribe(toPusherKey(`chat:${chatId}`))
+            pusherClient.bind('incoming_message', messageHandler)
+        }
+    }, [])
     // auutomatically scroll down to the recent messages
     const scrollDownRef = useRef<HTMLDivElement | null>(null)
 
