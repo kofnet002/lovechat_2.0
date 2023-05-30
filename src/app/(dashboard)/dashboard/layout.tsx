@@ -51,7 +51,7 @@ const Layout = async ({ children }: LayoutProps) => {
           <Icons.Logo className="h-8 w-auto text-indigo-600" />
         </Link>
 
-        {friends.length > 0 ? (<div className="text-xs font-semi-bold leading-6 text-gray-400">
+        {friends.length > 0 ? (<div className="text-xs font-bold leading-6 text-gray-400">
           Your chats
         </div>) : null}
 

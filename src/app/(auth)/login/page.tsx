@@ -4,8 +4,9 @@ import { useState } from "react";
 import Button from "../../components/ui/Button";
 import { signIn } from "next-auth/react";
 import { toast } from "react-hot-toast";
+import Image from "next/image";
 
-interface LoginPageProps {}
+interface LoginPageProps { }
 
 const LoginPage: React.FC<LoginPageProps> = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -24,10 +25,11 @@ const LoginPage: React.FC<LoginPageProps> = () => {
 
   return (
     <>
-      <div className="flex min-h-full items-center justify-center py-2 px-4 sm:px-6 lg:px-8">
+      <div className="flex h-screen items-center justify-center py-2 px-4 sm:px-6 lg:px-8">
         <div className="w-full flex flex-col items-center max-w-md-space-y-8">
-          <div className="flex flex-col items-center gap-8">
-            logo
+          <div className="relative flex flex-col items-center gap-8">
+            <Image src='/logo.png' width={100} height={100} priority alt="logo" referrerPolicy="no-referrer" />
+            <h4 className="font-bold">LoveChat</h4>
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
               Sign in to your account
             </h2>
