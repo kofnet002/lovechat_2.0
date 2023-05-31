@@ -44,6 +44,13 @@ export async function POST(req: Request) {
         // notify all connected chat room clients
         pusherServer.trigger(toPusherKey(`chat:${chatId}`), 'incoming_message', message)
 
+        // toast for new message if user is not on chat page
+        pusherServer.trigger(toPusherKey(`user:${friendId}:chats`), 'new_message', {
+            ...message,
+            senderImg: sender.image,
+            senderName: sender.name
+        })
+
         // all valid, send the message
         await db.zadd(`chat:${chatId}:messages`, {
             score: timestamp,
