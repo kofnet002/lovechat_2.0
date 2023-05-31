@@ -32,7 +32,8 @@ const Messages: FC<MessagesProps> = ({ initialMessages, chatId, sessionId, sessi
             pusherClient.subscribe(toPusherKey(`chat:${chatId}`))
             pusherClient.bind('incoming_message', messageHandler)
         }
-    }, [])
+    }, [chatId])
+
     // auutomatically scroll down to the recent messages
     const scrollDownRef = useRef<HTMLDivElement | null>(null)
 
