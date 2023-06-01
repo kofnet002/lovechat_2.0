@@ -30,7 +30,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
           <div className="relative flex flex-col items-center gap-8">
             <Image src='/logo.png' width={100} height={100} priority alt="logo" />
             <h4 className="font-bold">LoveChat</h4>
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+            <h2 className="mt-6 mb-5 text-center text-3xl font-bold tracking-tight text-gray-900">
               Sign in to your account
             </h2>
           </div>
