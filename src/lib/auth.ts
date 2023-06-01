@@ -68,7 +68,7 @@ export const authOptions: NextAuthOptions = {
             return session
         },
         redirect() {
-            return '/dashboard'
+            return 'https://lovechat-2-0.vercel.app/dashboard'
         }
     }
 }
