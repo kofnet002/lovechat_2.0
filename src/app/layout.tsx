@@ -2,8 +2,8 @@ import Providers from "./components/Providers";
 import "./globals.css";
 import { Montserrat, Poppins } from "next/font/google";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["300", "700"] });
-// const poppins = Montserrat({ subsets: ["latin"] });
+// const poppins = Poppins({ subsets: ["latin"], weight: ["300", "700"] });
+const poppins = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
   title: "LoveChat",

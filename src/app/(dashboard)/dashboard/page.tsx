@@ -57,7 +57,7 @@ const Dashbaord = async () => {
                 </h4>
                 <p className="mt-1 max-w-md">
                   <span className="text-zinc-400">
-                    {friend.lastMessage.senderId === session.user.id ? 'You' : ""}
+                    {friend.lastMessage.senderId === session.user.id ? 'You : ' : ""}
                   </span>
                   {friend.lastMessage.text}
                 </p>
