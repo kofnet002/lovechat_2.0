@@ -17,6 +17,7 @@ const LoginPage: React.FC<LoginPageProps> = () => {
       await signIn("google");
     } catch (error) {
       // display error message to user
+      console.log("Something went wrong", error);
       toast.error("Something went wrong with your login");
     } finally {
       setIsLoading(false);

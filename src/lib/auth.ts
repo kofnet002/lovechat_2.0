@@ -35,6 +35,7 @@ export const authOptions: NextAuthOptions = {
             clientSecret: getGoogleCredentials().clientSecret,
         }),
     ],
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async jwt({ token, user }) {
             // const dbUser = (await db.get(`user:${token.id}`)) as User | null  // Check if user is in db with token id
@@ -68,7 +69,7 @@ export const authOptions: NextAuthOptions = {
             return session
         },
         redirect() {
-            return 'https://lovechat-2-0.vercel.app/dashboard'
+            return '/dashboard'
         }
     }
 }
